@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuberag-deployment
+  namespace: kuberag
+  labels:
+    app: kuberag
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kuberag
+  template:
+    metadata:
+      labels:
+        app: kuberag
+    spec:
+      containers:
+      - name: kuberag
+        image: inventivework/kuberag:0.0.2
+        ports:
+        - containerPort: 5000
