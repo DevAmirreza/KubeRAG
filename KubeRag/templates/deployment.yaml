@@ -2,21 +2,33 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kuberag-deployment
-  namespace: kuberag
+  namespace: {{ .Release.Name }}
   labels:
-    app: kuberag
+    app: {{ .Release.Name }}
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: kuberag
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: kuberag
+        app: {{ .Release.Name }}
     spec:
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: {{ .Release.Name }}-secret
       containers:
       - name: kuberag
         image: inventivework/kuberag:0.0.2
+        command: [ "/bin/sh", "-c", "env", "/etc/secret-volume"]
+        volumeMounts:
+          - name: secret-volume
+            readOnly: true
+            mountPath: "/etc/secret-volume"
+        envFrom:
+        - configMapRef:
+            name: {{ .Release.Name }}-cm
         ports:
         - containerPort: 5000

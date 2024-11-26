@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-cm
+  namespace: {{ .Release.Name }}
+data:
+  AZURE_ENDPOINT: {{ .Values.AZURE_ENDPOINT }}
+  AZURE_API_VERSION: {{ .Values.AZURE_API_VERSION }}
+
+  AZURE_ENDPOINT_EMBED: {{ .Values.AZURE_ENDPOINT_EMBED }}
+  AZURE_ENDPOINT_VERSION_EMBED: {{ .Values.AZURE_ENDPOINT_VERSION_EMBED }}
