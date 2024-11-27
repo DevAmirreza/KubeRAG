@@ -92,7 +92,10 @@ llama-index-llms-azure-openai
 googlesearch-python
 faiss-cpu
 numpy
-setuptools
 llama-index-vector-stores-faiss
 llama-index-readers-json
 llama-index-readers-web
+google
+ipython
+google-api-python-client
+google-auth-oauthlib
