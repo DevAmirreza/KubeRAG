@@ -3,6 +3,10 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-cm
   namespace: {{ .Release.Name }}
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: 'Helm'
+    meta.helm.sh/release-namespace: 'default'
 data:
   AZURE_ENDPOINT: {{ .Values.AZURE_ENDPOINT }}
   AZURE_API_VERSION: {{ .Values.AZURE_API_VERSION }}

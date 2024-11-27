@@ -5,6 +5,9 @@ metadata:
   namespace: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: 'Helm'
+    meta.helm.sh/release-namespace: 'default'
 spec:
   replicas: 3
   selector:
@@ -21,7 +24,7 @@ spec:
             secretName: {{ .Release.Name }}-secret
       containers:
       - name: kuberag
-        image: inventivework/kuberag:0.0.2
+        image: inventivework/kuberag:0.0.18
         command: [ "/bin/sh", "-c", "env", "/etc/secret-volume"]
         volumeMounts:
           - name: secret-volume

@@ -2,6 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: kuberag-app-service
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: 'Helm'
+    meta.helm.sh/release-namespace: 'default'
 spec:
   selector:
     app: kuberag
