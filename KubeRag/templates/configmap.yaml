@@ -10,7 +10,10 @@ metadata:
 data:
   AZURE_ENDPOINT: {{ .Values.AZURE_ENDPOINT }}
   AZURE_API_VERSION: {{ .Values.AZURE_API_VERSION }}
-
   AZURE_ENDPOINT_EMBED: {{ .Values.AZURE_ENDPOINT_EMBED }}
   AZURE_ENDPOINT_VERSION_EMBED: {{ .Values.AZURE_ENDPOINT_VERSION_EMBED }}
-  LLM_FRAMEWORK: {{ .Values.LLM_FRAMEWORK }}
+  
+  LLM_FRAMEWORK: {{ .Values.LLM_FRAMEWORK }} #llamaindex, langchain, autogen
+  DATABASE_ENGINE: {{ .Values.DATABASE_ENGINE }} #mongodb, chromadb, faiss
+  LLM_MODEL: {{ .Values.LLM_MODEL }} #ChatGPT, LLama
+  LLM_MODEL_EMBED: {{ .Values.LLM_MODEL_EMBED }}
