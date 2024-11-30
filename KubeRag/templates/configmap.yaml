@@ -8,12 +8,15 @@ metadata:
     app.kubernetes.io/managed-by: 'Helm'
     meta.helm.sh/release-namespace: 'default'
 data:
-  AZURE_ENDPOINT: {{ .Values.AZURE_ENDPOINT }}
-  AZURE_API_VERSION: {{ .Values.AZURE_API_VERSION }}
-  AZURE_ENDPOINT_EMBED: {{ .Values.AZURE_ENDPOINT_EMBED }}
-  AZURE_ENDPOINT_VERSION_EMBED: {{ .Values.AZURE_ENDPOINT_VERSION_EMBED }}
+  AZURE:
+    AZURE_ENDPOINT: {{ .Values.AZURE_ENDPOINT }}
+    AZURE_API_VERSION: {{ .Values.AZURE_API_VERSION }}
+    AZURE_ENDPOINT_EMBED: {{ .Values.AZURE_ENDPOINT_EMBED }}
+    AZURE_ENDPOINT_VERSION_EMBED: {{ .Values.AZURE_ENDPOINT_VERSION_EMBED }}
+    AZURE_LLM_MODEL: {{ .Values.AZURE_LLM_MODEL }} #ChatGPT, LLama
+    AZURE_LLM_MODEL_EMBED: {{ .Values.AZURE_LLM_MODEL_EMBED }} #ChatGPT, LLama
+    AZURE_LLM_MODEL_DEPLOYMENT: {{ .Values.AZURE_LLM_MODEL_DEPLOYMENT }} #ChatGPT, LLama
+    AZURE_LLM_MODEL_EMBED_DEPLOYMENT: {{ .Values.AZURE_LLM_MODEL_EMBED_DEPLOYMENT }}
   
   LLM_FRAMEWORK: {{ .Values.LLM_FRAMEWORK }} #llamaindex, langchain, autogen
   DATABASE_ENGINE: {{ .Values.DATABASE_ENGINE }} #mongodb, chromadb, faiss
-  LLM_MODEL: {{ .Values.LLM_MODEL }} #ChatGPT, LLama
-  LLM_MODEL_EMBED: {{ .Values.LLM_MODEL_EMBED }}
