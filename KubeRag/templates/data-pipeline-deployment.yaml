@@ -25,7 +25,7 @@ spec:
             defaultMode: 384
       containers:
       - name: kuberag
-        image: inventivework/kuberag-data-pipeline:0.0.1
+        image: inventivework/kuberag-data-pipeline:0.0.2
         volumeMounts:
           - name: secret-volume
             mountPath: "/etc/secret-volume"
