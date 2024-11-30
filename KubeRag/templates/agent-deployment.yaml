@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kuberag-deployment
+  name: kuberag-agent-deployment
   namespace: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/managed-by: 'Helm'
     meta.helm.sh/release-namespace: 'default'
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: {{ .Release.Name }}
@@ -22,13 +22,12 @@ spec:
         - name: secret-volume
           secret:
             secretName: {{ .Release.Name }}-secret
+            defaultMode: 384
       containers:
       - name: kuberag
-        image: inventivework/kuberag:0.0.18
-        command: [ "/bin/sh", "-c", "env", "/etc/secret-volume"]
+        image: inventivework/kuberag-agent:0.0.2
         volumeMounts:
           - name: secret-volume
-            readOnly: true
             mountPath: "/etc/secret-volume"
         envFrom:
         - configMapRef:

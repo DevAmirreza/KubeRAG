@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuberag-data-pipeline-deployment
+  namespace: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: 'Helm'
+    meta.helm.sh/release-namespace: 'default'
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: {{ .Release.Name }}-secret
+            defaultMode: 384
+      containers:
+      - name: kuberag
+        image: inventivework/kuberag-data-pipeline:0.0.2
+        volumeMounts:
+          - name: secret-volume
+            mountPath: "/etc/secret-volume"
+        envFrom:
+        - configMapRef:
+            name: {{ .Release.Name }}-cm
+        ports:
+        - containerPort: 5001

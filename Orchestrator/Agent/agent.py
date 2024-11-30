@@ -7,20 +7,14 @@ from llama_index.core.chat_engine import SimpleChatEngine
 from llama_index.core.llms import ChatMessage
 from pydantic import BaseModel
 from googlesearch import search
-import requests
 from bs4 import BeautifulSoup
-import json
-import urllib.parse
 import faiss
 from llama_index.vector_stores.faiss import FaissVectorStore
 from llama_index.core import StorageContext, load_index_from_storage
 from llama_index.core import SimpleDirectoryReader, VectorStoreIndex
 from llama_index.embeddings.azure_openai import AzureOpenAIEmbedding
 from llama_index.core import Settings
-from llama_index.readers.json import JSONReader
-from llama_index.core import SummaryIndex
 from llama_index.readers.web import SimpleWebPageReader
-from IPython.display import Markdown, display
 from dotenv import load_dotenv
 import os
 import sys
@@ -44,6 +38,7 @@ load_dotenv()
 api_key = os.getenv('AZURE_API_KEY')
 azure_endpoint = os.getenv('AZURE_ENDPOINT')
 api_version = os.getenv('AZURE_API_VERSION')
+llm_framework = os.getenv('LLM_FRAMEWORK')
 
 SEARCH_RESULT_NUM=3
 SCOPES = ["https://www.googleapis.com/auth/gmail.send"]
@@ -275,15 +270,9 @@ email_tool = FunctionTool.from_defaults(gmail_send_message)
 agent = ReActAgent.from_tools([analyze_tool, search_tool, generate_tool, expand_tool, format_tool, email_tool ], llm=llm, verbose=True, max_iterations=15)
 
 
-
-def chat():
-   agent.chat("""Run following tasks on topic of new advancements with AIOps
-           1 - Analyze the input text 
-           2 - Search each topic 
-           3 - Generate a text from the step 1 input and expand it
-           4 - Format the content 
-           5 - Send an email to amiryad.inventive@gmail.com via content of step 5  
-           """)
+def chat(input):
+   if llm_framework == "llamaindex":  
+      agent.chat(input)
    
 
 sys.modules[__name__] = chat
