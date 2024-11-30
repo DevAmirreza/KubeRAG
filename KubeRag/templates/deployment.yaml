@@ -22,13 +22,12 @@ spec:
         - name: secret-volume
           secret:
             secretName: {{ .Release.Name }}-secret
+            defaultMode: 384
       containers:
       - name: kuberag
         image: inventivework/kuberag:0.0.18
-        command: [ "/bin/sh", "-c", "env", "/etc/secret-volume"]
         volumeMounts:
           - name: secret-volume
-            readOnly: true
             mountPath: "/etc/secret-volume"
         envFrom:
         - configMapRef:
