@@ -16,13 +16,6 @@ def chat():
     query = request.get_json().get('input')
     return agent.chat(query)
 
-@app.route('/api/upload', methods=['POST'])
-# ‘/’ URL is bound with hello_world() function.
-def upload():
-    query = request.get_json().get('file')
-    return agent.chat(query)
-
-
 
 # main driver function
 if __name__ == '__main__':

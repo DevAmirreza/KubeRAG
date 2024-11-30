@@ -270,7 +270,6 @@ email_tool = FunctionTool.from_defaults(gmail_send_message)
 agent = ReActAgent.from_tools([analyze_tool, search_tool, generate_tool, expand_tool, format_tool, email_tool ], llm=llm, verbose=True, max_iterations=15)
 
 
-
 def chat(input):
    if llm_framework == "llamaindex":  
       agent.chat(input)
