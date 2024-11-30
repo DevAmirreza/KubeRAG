@@ -8,5 +8,5 @@
 
 
 # Architecture 
-<img src="KubeRAG-arch.png" alt="Alt Text" >
+<img src="KubeRAG-arch-0.0.2.png" alt="Alt Text" >
 
