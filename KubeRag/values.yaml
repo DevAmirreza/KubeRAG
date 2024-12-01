@@ -1,11 +1,11 @@
 LLM_FRAMEWORK: llamaindex
 DATABASE_ENGINE: mongodb
-AZURE:
-  AZURE_ENDPOINT: https://atnni-m3d5mjeh-switzerlandnorth.openai.azure.com/openai/deployments/gpt-4-32k/chat/completions?api-version=2024-08-01-preview
-  AZURE_API_VERSION: 2024-08-01-preview
-  AZURE_ENDPOINT_EMBED: https://atnni-m3d5mjeh-switzerlandnorth.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15
-  AZURE_ENDPOINT_VERSION_EMBED: "2023-05-15"
-  AZURE_LLM_MODEL: gpt-4-32k 
-  AZURE_LLM_MODEL_EMBED: text-embedding-ada-002 
-  AZURE_LLM_MODEL_DEPLOYMENT: gpt-4-32k
-  AZURE_LLM_MODEL_EMBED_DEPLOYMENT: text-embedding-ada-002
+AZURE_ENDPOINT: https://atnni-m39y60aw-australiaeast.openai.azure.com/openai/deployments/gpt-4-32k/chat/completions?api-version=2024-08-01-preview
+AZURE_API_VERSION: "2024-08-01-preview"
+AZURE_ENDPOINT_EMBED: "https://atnni-m39y60aw-australiaeast.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15"
+AZURE_ENDPOINT_VERSION_EMBED: "2023-05-15"
+AZURE_LLM_MODEL: "gpt-4-32k"
+AZURE_LLM_MODEL_EMBED: "text-embedding-ada-002"
+AZURE_LLM_MODEL_DEPLOYMENT: "gpt-4-32k"
+AZURE_LLM_MODEL_EMBED_DEPLOYMENT: "text-embedding-ada-002"
+AGENT_IMAGE: inventivework/kuberag-agent:0.0.9

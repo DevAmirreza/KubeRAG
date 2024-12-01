@@ -25,12 +25,14 @@ spec:
             defaultMode: 384
       containers:
       - name: kuberag
-        image: inventivework/kuberag-agent:0.0.2
+        image: {{ .Values.AGENT_IMAGE }}
         volumeMounts:
           - name: secret-volume
             mountPath: "/etc/secret-volume"
         envFrom:
         - configMapRef:
             name: {{ .Release.Name }}-cm
+        - secretRef:
+            name: {{ .Release.Name }}-secret
         ports:
         - containerPort: 5000
