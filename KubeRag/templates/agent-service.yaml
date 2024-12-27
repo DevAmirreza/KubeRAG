@@ -9,7 +9,7 @@ metadata:
     meta.helm.sh/release-namespace: 'default'
 spec:
   selector:
-    app: kuberag
+    app: {{ .Release.Name }}
   ports:
   - protocol: TCP
     port: 80
