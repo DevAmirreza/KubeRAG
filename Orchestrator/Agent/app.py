@@ -2,6 +2,7 @@
 # An object of Flask class is our WSGI application.
 from flask import Flask, request, jsonify
 import agent
+import agent_simple
 
 # Flask constructor takes the name of 
 # current module (__name__) as argument.
@@ -14,7 +15,7 @@ app = Flask(__name__)
 # ‘/’ URL is bound with hello_world() function.
 def chat():
     query = request.get_json().get('input')
-    return agent.chat(query)
+    return jsonify(agent_simple.chat(query))
 
 
 # main driver function

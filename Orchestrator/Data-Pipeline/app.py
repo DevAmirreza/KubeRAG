@@ -2,6 +2,7 @@
 # An object of Flask class is our WSGI application.
 from flask import Flask, request, jsonify
 import load
+import load_mongo
 import os
 
 # Flask constructor takes the name of 
@@ -35,8 +36,10 @@ def upload():
         # Load and index after upload
         load.load_index()
         return True
-
-
+    
+@app.route('/api/testMongo', methods=['GET'])
+def upload_mongo():
+    load_mongo.load_index()
 
 
 # main driver function
